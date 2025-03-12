@@ -48,15 +48,22 @@
             <div class="codea">Codealuxz</div>
         </div>
         <div class="card photo closed">
-
-        </div>
+            <img class="photologo" src="./icon/photo.png" alt="">
+            <div class="big_shadow_ph"></div>
+            <div class="title">
+                <h1>
+                    PHOTOS                    
+                </h1>
+            </div><button class="pf" onclick="document.location.href='https://photo.codealuxz.fr';">Visit</button>
+<div class="imgexbox"><img class="imgex" src="./img/Capture d'écran 2025-03-07 192320.png" alt="">
+        </div></div>
         <div class="card autre closed">
 
         </div>
     </div>
 
     <script>
-        
+
         window.onload = function () {
             const cards = document.querySelectorAll('.card');
 
@@ -70,6 +77,13 @@
             function openCard(card) {
                 card.classList.add('open');
                 card.classList.remove('closed');
+
+                // Vérification et affichage dans la console
+                if (card.classList.contains('portfolio')) {
+                    document.body.style.backgroundColor = "var(--backgroud-pf)";
+                } else if (card.classList.contains('photo')) {
+                    document.body.style.backgroundColor = "var(--backgroud-ph)";
+                }
             }
 
             cards.forEach(card => {
@@ -79,7 +93,6 @@
                 });
             });
         };
-
 
     </script>
 </body>

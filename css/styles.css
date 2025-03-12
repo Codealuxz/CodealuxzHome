@@ -114,7 +114,9 @@ body {
 }
 
 .title h1 {
-    position: relative;
+    position: absolute;
+    top: 50px;
+    left: 55px;
     font-size: 3.8em !important;
     margin-bottom: 10px;
     margin-top: 0px;
@@ -123,6 +125,7 @@ body {
     font-family: 'dunkin', sans-serif;
     text-decoration: underline var(--text-highlight-pf);
     text-decoration-skip: 66px;
+    transition: all 0.2s ease, rotate 0.4s ease;
 }
 
 hi {
@@ -203,7 +206,8 @@ button.pf {
     border: none;
     position: absolute;
     top: 170px;
-    left: 10%;
+    right: 50%;
+    transform: translateX(50%);
     color: var(--text-color-pf-2);
     padding: 20px 0px;
     border-radius: 10000px;
@@ -212,6 +216,7 @@ button.pf {
     cursor: pointer;
     box-shadow: 0 0 40px var(--info-cartel-pf);
     z-index: 10;
+    transition: all 0.2s ease, width 0.6s ease;
 }
 
 button.pf:hover {
@@ -252,7 +257,6 @@ button.pfs:hover {
     height: 60%;
     z-index: 10;
     box-shadow: 0 0 30px var(--shadow-pf);
-    transition: all 0.2s ease;
 }
 
 .logo:hover {
@@ -287,14 +291,17 @@ button.pfs:hover {
 }
 
 .portfolio.closed .codea {
-    opacity: 0;
+    display: none;
 }
 
 .portfolio.closed .title h1 {
     text-decoration: underline #00000000;
     position: absolute;
-    right: 0px;
-    bottom: 40%;
+    left: -190px;
+    bottom: calc(50% + 100px);
+    right: initial;
+    top: initial;
+    width: 500px;
     transform: translateX(-50%);
     font-size: 3.8em !important;
     margin-bottom: 10px;
@@ -302,8 +309,12 @@ button.pfs:hover {
     margin-left: 0;
     z-index: 10 !important;
     rotate: -90deg;
-    line-height: 1.8;
 
+}
+
+.portfolio.closed .title ba {
+    opacity: 0 !important;
+    scale: 1;
 }
 
 .portfolio.closed .title hi {
@@ -319,7 +330,7 @@ button.pfs:hover {
 }
 
 .portfolio.closed .info {
-    opacity: 0;
+    display: none;
 }
 
 .portfolio.closed .logo {
@@ -343,16 +354,21 @@ button.pfs:hover {
 }
 
 .portfolio.closed .big_shadow {
+    position: absolute;
     top: -60% !important;
     left: calc(-200% - 100px) !important;
-    opacity: 1;
     height: 100% !important;
-    aspect-ratio: 1;
     width: auto !important;
     filter: blur(100px);
-    z-index: 9;
+}
+.portfolio.closed .pos2 {
+    bottom: -100% !important;
+    top: initial !important;;
+    left: initial !important;
+    right: -100%;
 }
 
 .portfolio.closed button {
     opacity: 0;
+    width: 0;
 }

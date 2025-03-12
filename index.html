@@ -56,10 +56,10 @@
     </div>
 
     <script>
+        
         window.onload = function () {
             const cards = document.querySelectorAll('.card');
 
-            // Fonction pour fermer toutes les cartes
             function closeAllCards() {
                 cards.forEach(card => {
                     card.classList.add('closed');
@@ -67,24 +67,15 @@
                 });
             }
 
-            // Fonction pour ouvrir une carte
             function openCard(card) {
                 card.classList.add('open');
                 card.classList.remove('closed');
             }
 
-            // Survol des cartes
             cards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
-                    // Ferme toutes les autres cartes avant d'ouvrir celle survolée
                     closeAllCards();
-
-                    // Ouvre la carte survolée
                     openCard(card);
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    // On ne fait rien quand on quitte la carte, l'agrandissement reste jusqu'au prochain survol
                 });
             });
         };

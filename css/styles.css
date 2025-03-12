@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@font-face {
+    font-family: 'dunkin';
+    src: url('../font/typo_round_regular_demo.otf') format('opentype');
+}
+
+* {
+    transition: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+:root {
+    /*---Profolio---*/
+    --backgroud-pf: #ffffff;
+    --card-pf: #0B0C10;
+    --text-highlight-pf: #70b8ff;
+    --shadow-blur-pf: #1D2E73;
+    --shadow-pf: #70b7ff7f;
+    --info-cartel-pf: #387aff99;
+    --text-color-pf: #FFFFFF;
+    --text-color-pf-2: #1D2E73;
+    --outline: #f2f2f25c;
+    /*----Photos----*/
+}
+
+
+/* ██████╗   ██████╗ */
+/* ██╔══██╗ ██╔════╝ */
+/* ██████╔╝ ██║      */
+/* ██╔═══╝  ██║      */
+/* ██║      ╚██████╗ */
+/* ╚═╝       ╚═════╝ */
+
+.card {
+    margin: 0;
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    border: #0B0C10 1px solid;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    height: calc(100vh - 60px);
+    margin: 30px;
+}
+
+.open {
+    flex: 1 1 80vw;
+}
+
+.closed {
+    flex: 0 0 80px;
+}
+
+
+
+.portfolio {
+    font-family: 'Poppins';
+    padding: 50px 55px;
+    background: var(--card-pf);
+    color: var(--text-color-pf);
+}
+
+.big_shadow {
+    z-index: 1 !important;
+    width: 70%;
+    position: absolute;
+    left: -35%;
+    background-color: var(--shadow-blur-pf);
+    filter: blur(200px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.pos2 {
+    left: initial;
+    right: -35%;
+    bottom: -50%;
+}
+
+.cadri_a {
+    width: calc(100% - 104px);
+    border-left: var(--outline) solid;
+    border-right: var(--outline) solid;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    z-index: 0;
+}
+
+.cadri_b {
+    width: 100%;
+    border-bottom: var(--outline) solid;
+    border-top: var(--outline) solid;
+    height: calc(100% - 104px);
+    position: absolute;
+    left: 0;
+    top: 50px;
+    z-index: 0;
+}
+
+.title h1 {
+    position: relative;
+    font-size: 3.8em !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    margin-left: 5px;
+    z-index: 10 !important;
+    font-family: 'dunkin', sans-serif;
+    text-decoration: underline var(--text-highlight-pf);
+    text-decoration-skip: 66px;
+}
+
+hi {
+    color: var(--text-highlight-pf);
+}
+
+.left_side_pf {
+    width: calc(50% - 50px);
+    position: absolute;
+    top: 200px;
+    left: 50px;
+    height: calc(100% - 270px);
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+
+.info {
+    width: 300px;
+    position: absolute;
+    right: calc(110px + 5%);
+    bottom: calc(50px + 20%);
+    display: flex;
+    z-index: 10;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--info-cartel-pf);
+    border-radius: 2000px;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 3px 3px 30px var(--shadow-blur-pf);
+    scale: 1vw;
+}
+
+.cadri_g {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    --color: rgba(255, 255, 255, 0.027);
+    background-color: transparent;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+    background-size: 66px 66px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.codea {
+    position: absolute;
+    bottom: 55px;
+    right: 60px;
+    font-weight: 700;
+    z-index: 10;
+    font-size: 1.1em;
+}
+
+.codea::after {
+    content: "</>";
+    position: relative;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    rotate: 10deg;
+}
+
+.button-logo-container {
+    display: inline-block;
+    text-align: center;
+}
+
+button.pf {
+    font-size: 2.5em !important;
+    background: var(--backgroud-pf);
+    border: none;
+    position: absolute;
+    top: 170px;
+    left: 10%;
+    color: var(--text-color-pf-2);
+    padding: 20px 0px;
+    border-radius: 10000px;
+    font-weight: 700;
+    width: 80%;
+    cursor: pointer;
+    box-shadow: 0 0 40px var(--info-cartel-pf);
+    z-index: 10;
+}
+
+button.pf:hover {
+    scale: 1.05;
+    box-shadow: 0 0 20px var(--text-highlight-pf);
+    color: var(--text-highlight-pf);
+}
+
+button.pfs {
+    font-size: 1.1em !important;
+    background: var(--backgroud-pf);
+    border: none;
+    width: 120px;
+    color: var(--text-color-pf-2);
+    padding: 10px 20px;
+    border-radius: 10000px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 3px 3px 1px var(--shadow-blur-pf);
+    margin: 10px;
+    text-align: center;
+}
+
+button.pfs:hover {
+    scale: 1.05;
+    box-shadow: 4px 4px 3px var(--shadow-blur-pf);
+}
+
+.logo img {
+    height: 100%;
+}
+
+.logo {
+    border-radius: 10000px;
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    height: 60%;
+    z-index: 10;
+    box-shadow: 0 0 30px var(--shadow-pf);
+    transition: all 0.2s ease;
+}
+
+.logo:hover {
+    rotate: -20deg;
+    scale: 1.05;
+}
+
+.portfolio.closed {
+    padding: 20px;
+}
+
+
+
+
+
+.portfolio.closed .cadri_b {
+    width: 100%;
+    border-bottom: var(--outline) solid;
+    border-top: var(--outline) solid;
+    height: calc(100% - 40px);
+    position: absolute;
+    left: 0;
+    top: 20px;
+    z-index: 0;
+}
+
+.portfolio.closed .cadri_a {
+    width: calc(100% - 40px);
+    border-left: var(--outline) solid;
+    border-right: var(--outline) solid;
+    height: 100%;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    z-index: 0;
+}
+
+.portfolio.closed .codea {
+    opacity: 0;
+}
+
+.portfolio.closed .title h1 {
+    text-decoration: underline #00000000;
+    position: absolute;
+    right: 0px;
+    bottom: 40%;
+    transform: translateX(-50%);
+    font-size: 3.8em !important;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-left: 0;
+    z-index: 10 !important;
+    rotate: -90deg;
+    line-height: 1.8;
+
+}
+
+.portfolio.closed .title hi {
+    opacity: 1 !important;
+    scale: 1;
+}
+
+.portfolio.closed .left_side_pf {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.portfolio.closed .info {
+    opacity: 0;
+}
+
+.portfolio.closed .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 38px);
+    aspect-ratio: 1;
+    box-shadow: 0 0 0 #00000000;
+}
+
+.portfolio.closed .logo:hover {
+    rotate: 0deg !important;
+    scale: 1 !important;
+}
+
+.portfolio.closed .logo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 !important;
+}
+
+.portfolio.closed .big_shadow {
+    top: -60% !important;
+    left: calc(-200% - 100px) !important;
+    opacity: 1;
+    height: 100% !important;
+    aspect-ratio: 1;
+    width: auto !important;
+    filter: blur(100px);
+    z-index: 9;
+}
+
+.portfolio.closed button {
+    opacity: 0;
+}

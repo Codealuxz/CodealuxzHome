@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codealuxz - Développeur Web & Photographe</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="icon/logo.png" sizes="32x32" type="image/png">
+    <meta name="description" content="Moi c'est Codealuxz je suis développeur web et aussi photographe">
+    <meta name="keywords"
+        content="Morgan Mazza, développeur web, portfolio, photographe, full-stack, HTML, CSS, JavaScript, Python, Godot, jeux vidéo, codealuxz, Codealuxz, photo, code, photography">
+    <meta name="author" content="Morgan Mazza / Codealuxz">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="alexa" content="index, follow">
+    <meta name="yandex" content="index, follow">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card portfolio open">
+            <div class="title">
+                <h1>
+                    <ba>My dev </ba>
+                    <hi class="hi"> Portfolio</hi>
+                </h1>
+            </div><button class="pf" onclick="document.location.href='https://dev.codealuxz.fr';">Visit</button>
+
+            <div class="left_side_pf">
+                <div class="button-logo-container">
+                    <div class="logo"><img src="icon/logo.png" alt=""></div>
+                </div>
+            </div>
+            <div class="right_side_pf">
+                <div class="info">
+                    <button class="pfs" onclick="document.location.href='https://codealuxz.fr/#second'">Skills</button>
+                    <button class="pfs" onclick="document.location.href='https://codealuxz.fr/#third'">Project</button>
+                </div>
+            </div>
+
+            <div class="big_shadow"></div>
+            <div class="big_shadow pos2"></div>
+            <div class="cadri_a"></div>
+            <div class="cadri_b"></div>
+            <div class="cadri_g"></div>
+            <div class="codea">Codealuxz</div>
+        </div>
+        <div class="card photo closed">
+
+        </div>
+        <div class="card autre closed">
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const cards = document.querySelectorAll('.card');
+
+            // Fonction pour fermer toutes les cartes
+            function closeAllCards() {
+                cards.forEach(card => {
+                    card.classList.add('closed');
+                    card.classList.remove('open');
+                });
+            }
+
+            // Fonction pour ouvrir une carte
+            function openCard(card) {
+                card.classList.add('open');
+                card.classList.remove('closed');
+            }
+
+            // Survol des cartes
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Ferme toutes les autres cartes avant d'ouvrir celle survolée
+                    closeAllCards();
+
+                    // Ouvre la carte survolée
+                    openCard(card);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // On ne fait rien quand on quitte la carte, l'agrandissement reste jusqu'au prochain survol
+                });
+            });
+        };
+
+
+    </script>
+</body>
+
+</html>

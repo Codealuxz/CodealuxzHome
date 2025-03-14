@@ -33,7 +33,7 @@ body {
     --card-ph: #ECECEC;
     --text-color-ph: #000000;
     --text-highlight-ph: #8BE657;
-    --text-highlight-ph2:rgb(152, 233, 77);
+    --text-highlight-ph2: rgb(152, 233, 77);
     /*-----Autre-----*/
     --text-highlight-au: #FF4444;
     --card-au: #0b0c108e;
@@ -422,6 +422,7 @@ button.pfs:hover {
     width: calc(100% - 38px);
     aspect-ratio: 1;
     box-shadow: 0 0 0 #00000000;
+    transform: translateX(0);
 }
 
 .portfolio.closed .logo:hover {
@@ -574,6 +575,10 @@ button.pfs:hover {
     height: 80px;
 }
 
+.photo.closed .imgex {
+    scale: 0;
+}
+
 
 .autre {
     background-color: var(--card-au);
@@ -613,7 +618,7 @@ button.pfs:hover {
     bottom: 50%;
     right: 5%;
     transform: translateY(50%);
-    padding: 20px 0px;
+    padding: 25px 10px;
     border-radius: 10000px;
     font-weight: 700;
     width: 45%;
@@ -621,7 +626,7 @@ button.pfs:hover {
     cursor: pointer;
     box-shadow: 0 0 40px #ececec9b;
     z-index: 10;
-    max-height: 90px;
+    max-height: 90px !important;
     overflow: hidden;
 }
 
@@ -663,28 +668,16 @@ button.pfs:hover {
     scale: 0;
 }
 
-.autre.closed .title hi {
-    background-color: transparent;
-    position: absolute;
-    top: 20px;
-    width: 350px;
-    right: calc(30vh - 170px);
-    transform: transla"teX(50%);
-}
 
-.autre.closed .title h1 {
-    rotate: -90deg;
-}
 .autre.closed ha {
     opacity: 0;
-    rotate: -90deg;
 }
 
-.autre.closed .form_img{
+.autre.closed .form_img {
     scale: 0;
 }
 
-.autre.closed .autrelogo{
+.autre.closed .autrelogo {
     top: 20px;
     right: 20px;
     width: 80px;
@@ -719,18 +712,22 @@ button.pfs:hover {
 }
 
 @keyframes change_big {
-    0%{
+    0% {
         background-color: var(--shadow-blur-pf);
     }
+
     25% {
         background-color: var(--info-cartel-pf);
     }
+
     50% {
         background-color: var(--shadow-v2);
     }
+
     75% {
         background-color: var(--text-color-pf-2);
     }
+
     100% {
         background-color: var(--shadow-blur-pf);
     }
@@ -741,16 +738,20 @@ button.pfs:hover {
         transform: scale(1);
         background-color: var(--text-highlight-ph);
     }
+
     25% {
         transform: scale(1.1);
     }
+
     50% {
         transform: scale(1.05);
         background-color: var(--text-highlight-ph2);
     }
+
     75% {
         transform: scale(1.15);
     }
+
     100% {
         transform: scale(1);
         background-color: var(--text-highlight-ph);
@@ -842,5 +843,194 @@ button.pfs:hover {
             -9354px 2946px,
             9553px 21574px,
             946px 9057px;
+    }
+}
+
+
+/* ██████╗  ███████╗ ███████╗ ██████╗   ██████╗  ███╗   ██╗ ███████╗ ██╗ ██╗   ██╗ ███████╗ */
+/* ██╔══██╗ ██╔════╝ ██╔════╝ ██╔══██╗ ██╔═══██╗ ████╗  ██║ ██╔════╝ ██║ ██║   ██║ ██╔════╝ */
+/* ██████╔╝ █████╗   ███████╗ ██████╔╝ ██║   ██║ ██╔██╗ ██║ ███████╗ ██║ ██║   ██║ █████╗   */
+/* ██╔══██╗ ██╔══╝   ╚════██║ ██╔═══╝  ██║   ██║ ██║╚██╗██║ ╚════██║ ██║ ╚██╗ ██╔╝ ██╔══╝   */
+/* ██║  ██║ ███████╗ ███████║ ██║      ╚██████╔╝ ██║ ╚████║ ███████║ ██║  ╚████╔╝  ███████╗ */
+/* ╚═╝  ╚═╝ ╚══════╝ ╚══════╝ ╚═╝       ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝ ╚═╝   ╚═══╝   ╚══════╝ */
+
+@media (max-width: 1285px) {
+    .info {
+        right: calc(50px + 5%);
+    }
+}
+
+@media (max-width: 1270px) {
+    .autre.open .title {
+        font-size: 0.8em;
+    }
+
+    .autre button.pf {
+        font-size: 2em !important;
+    }
+
+    .photo .imgex {
+        width: calc(100% - 150px);
+    }
+}
+
+@media (max-width: 1125px) {
+    .autrelogo {
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
+    }
+
+    .autre.open .title h1 {
+        top: 130px;
+    }
+
+    .info {
+        right: 55px !important;
+    }
+}
+@media (min-width: 1115px) {
+    
+.autre.closed .title hi {
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    width: 350px;
+    right: calc(30vh - 170px);
+    transform: transla"teX(50%);
+    }
+    
+    .autre.closed .title h1 {
+    rotate: -90deg;
+    }
+}
+@media (max-width: 1115px) {
+    .autre button.pf {
+        font-size: 1.8em !important;
+    }
+
+    .autre .title h1 {
+        position: absolute;
+        left: -5px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .autre.closed .title hi {
+        background-color: transparent;
+        position: absolute;
+        width: 350px;
+        rotate: -90deg;
+        right: -125px;
+        top: calc(-20px + 50%);
+    }
+
+    .autre.closed .title h1 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+}
+
+@media (max-width: 1050px) {
+    .autre button.pf {
+        font-size: 1.8em !important;
+        width: 90%;
+    }
+
+    .autre button.pf:hover {
+        font-size: 1.8em !important;
+        width: 95%;
+        right: 2.5%;
+    }
+
+    .autre .form_img {
+        width: calc(50vh - 60px);
+        animation: none;
+        rotate: 0deg;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .info {
+        bottom: 340px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .logo {
+        height: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .left_side_pf {
+        width: 100%;
+        position: absolute;
+        top: 200px;
+        left: 0;
+        height: calc(100% - 270px);
+        display: flex;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .photo .imgex {
+        width: calc(100% - 50px);
+    }
+}
+
+@media (max-width: 980px) {
+    .autre.open .title h1 {
+        font-size: 2.8em !important;
+    }
+
+    .photo .imgex {
+        height: 55%;
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .imgexbox::after {
+        width: 100%;
+        height: 150%;
+        position: absolute;
+        top: -35%;
+        right: -20%;
+        rotate: -90deg;
+        content: '';
+        filter: blur(50px);
+        background-color: var(--card-ph);
+    }
+}
+
+@media (max-width: 940px) {
+    .portfolio.open .title h1 {
+        font-size: 2.7em !important;
+    }
+
+    .photo button.pf {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-height: 750px) {
+    .info {
+        bottom: 315px;
+    }
+}
+
+@media (max-height: 720px) {
+    .info {
+        bottom: 295px;
     }
 }

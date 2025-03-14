@@ -45,6 +45,66 @@ body {
 /* ██║      ╚██████╗ */
 /* ╚═╝       ╚═════╝ */
 
+.hole {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 5px;
+    left: 30px;
+    background-image: url(../img/crack.png);
+    background-size: cover;
+    z-index: 9999;
+}
+
+.hole.big {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(16, 16, 16);
+    background-image: url(../img/crack_big.png);
+    background-size: cover;
+}
+
+.hole::after {
+    text-align: center;
+    z-index: 999;
+    content: 'Un trou de CSS';
+    position: absolute;
+    font-size: 10px;
+    top: 0px;
+    right: 0;
+    transform: translateX(50%);
+    width: 90px;
+    opacity: 1;
+    scale: 0;
+    color: #000000;
+    background-color: #ECECEC;
+    font-family: 'Poppins';
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.hole:hover::after {
+    text-align: center;
+    z-index: 999;
+    content: 'Un trou de CSS';
+    position: absolute;
+    font-size: 10px;
+    top: -20px;
+    right: 0;
+    transform: translateX(50%);
+    width: 90px;
+    opacity: 1;
+    scale: 1;
+    color: 000000;
+    background-color: #ECECEC;
+    font-family: 'Poppins';
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
 .card {
     margin: 0;
     border-radius: 30px;
@@ -524,13 +584,70 @@ button.pfs:hover {
     color: var(--text-color-pf);
 }
 
+.autre .title hi {
+    background-color: var(--text-highlight-au);
+    border-radius: 20px;
+    padding: 0 10px;
+}
+
+.autre button.pf {
+    font-size: 2.5em !important;
+    background: var(--backgroud-pf);
+    border: none;
+    position: absolute;
+    bottom: 50%;
+    right: 5%;
+    transform: translateY(50%);
+    padding: 20px 0px;
+    border-radius: 10000px;
+    font-weight: 700;
+    width: 45%;
+    scale: 1;
+    cursor: pointer;
+    box-shadow: 0 0 40px #ececec9b;
+    z-index: 10;
+}
+
+.autre button.pf:hover {
+    width: 50%;
+    right: 3%;
+    color: var(--text-highlight-au);
+    border: var(--text-highlight-au) solid 3px;
+}
+
+.form_img {
+    z-index: 3;
+    position: absolute;
+    width: 40%;
+    rotate: -15deg;
+    left: 50px;
+    bottom: 60px;
+    border: #ECECEC solid;
+    border-radius: 30px;
+    animation: flow;
+    animation-duration: 15s;
+    /*animation repeat*/
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+
+}
+
+.autrelogo {
+    width: 100px;
+    position: absolute;
+    z-index: 10;
+    right: 30px;
+    top: 30px;
+    border-radius: 50%;
+}
+
+
 .big_shadow_au {
     z-index: 1 !important;
     width: 100%;
     position: absolute;
-    right: 0 ;
+    right: 0;
     bottom: -70%;
-    background-color: var(--text-highlight-au);
     filter: blur(75px);
     aspect-ratio: 3/2;
     border-radius: 50%;
@@ -560,6 +677,26 @@ button.pfs:hover {
     background-size: 8px 8px;
     width: 100%;
     height: 100%;
+}
+
+@keyframes flow {
+    0% {
+        rotate: -15deg;
+        left: 50px;
+        bottom: 60px;
+    }
+
+    50% {
+        rotate: -10deg;
+        left: 60px;
+        bottom: 80px;
+    }
+
+    100% {
+        rotate: -15deg;
+        left: 50px;
+        bottom: 60px;
+    }
 }
 
 @keyframes thingy {

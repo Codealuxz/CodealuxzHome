@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 20px;
+        color: rgb(233, 233, 233);
+        background-color: rgb(16, 16, 16);
+        overflow: scroll;
+    }
+
+</style>
+<body>
+    <div class="css"></div>
+</body>
+<script>
+    //cree une fonction qui récupère tout le code du fichier ../css/styles.css et qui l'affiche avec les retoures a la ligne dan la div .css
+    function displayCSS() {
+        var cssContent = document.querySelector('.css');
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '../css/styles.css', true);
+        xhr.onload = function() {
+            if (this.status === 200) {
+                // il faut ajouter <br> pour les retoures a la ligne
+                cssContent.innerHTML = this.responseText.replace(/\n/g, '<br>');
+            }
+        };
+        xhr.send();
+    }
+    displayCSS(); // appelle la fonction pour afficher le css
+
+</script>
+</html>

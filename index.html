@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <div class="hole"></div>
     <div class="container">
         <div class="card portfolio open">
             <div class="title">
@@ -64,6 +65,7 @@
             </div>
         </div>
         <div class="card autre closed">
+            <img class="autrelogo" src="./icon/tally.png" alt="">
             <div class="bg"></div>
             <div class="title">
                 <h1>
@@ -71,11 +73,21 @@
                     <hi>Projet web ?</hi>
                 </h1>
             </div>
-
+            <img class="form_img" src="./img/form.png" alt="">
+            <button class="pf">Réaliser mon Projet</button>
             <div class="big_shadow_au"></div>
         </div>
 
         <script>
+            document.querySelector('.hole').addEventListener('click', () => {
+                const hole = document.querySelector('.hole');
+                hole.classList.add('big');
+                //sa attent l'agrandissement (0.2s)
+                setTimeout(() => {
+                    document.location.href = 'css.html';
+                }, 200);
+            });
+
 
             window.onload = function () {
                 const cards = document.querySelectorAll('.card');

@@ -21,6 +21,7 @@ body {
     --backgroud-pf: #ffffff;
     --card-pf: #0B0C10;
     --text-highlight-pf: #70b8ff;
+    --shadow-v2: #1760a8;
     --shadow-blur-pf: #1D2E73;
     --shadow-pf: #70b7ff7f;
     --info-cartel-pf: #387aff99;
@@ -32,6 +33,7 @@ body {
     --card-ph: #ECECEC;
     --text-color-ph: #000000;
     --text-highlight-ph: #8BE657;
+    --text-highlight-ph2:rgb(152, 233, 77);
     /*-----Autre-----*/
     --text-highlight-au: #FF4444;
     --card-au: #0b0c108e;
@@ -150,6 +152,10 @@ body {
     filter: blur(200px);
     aspect-ratio: 1;
     border-radius: 50%;
+    animation: change_big;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .pos2 {
@@ -470,6 +476,10 @@ button.pfs:hover {
     filter: blur(100px);
     aspect-ratio: 1;
     z-index: 1;
+    animation: scal_move;
+    animation-duration: 10s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
 }
 
 .photologo {
@@ -584,10 +594,15 @@ button.pfs:hover {
     color: var(--text-color-pf);
 }
 
-.autre .title hi {
+.autre hi {
     background-color: var(--text-highlight-au);
     border-radius: 20px;
     padding: 0 10px;
+    color: var(--text-color-pf) !important;
+}
+
+.autre button hi {
+    padding: 10px;
 }
 
 .autre button.pf {
@@ -606,6 +621,8 @@ button.pfs:hover {
     cursor: pointer;
     box-shadow: 0 0 40px #ececec9b;
     z-index: 10;
+    max-height: 90px;
+    overflow: hidden;
 }
 
 .autre button.pf:hover {
@@ -642,20 +659,42 @@ button.pfs:hover {
 }
 
 
-.big_shadow_au {
-    z-index: 1 !important;
-    width: 100%;
-    position: absolute;
-    right: 0;
-    bottom: -70%;
-    filter: blur(75px);
-    aspect-ratio: 3/2;
-    border-radius: 50%;
+.autre.closed button.pf {
     scale: 0;
 }
 
+.autre.closed .title hi {
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    width: 350px;
+    right: calc(30vh - 170px);
+    transform: transla"teX(50%);
+}
 
-/* From Uiverse.io by SelfMadeSystem */
+.autre.closed .title h1 {
+    rotate: -90deg;
+}
+.autre.closed ha {
+    opacity: 0;
+    rotate: -90deg;
+}
+
+.autre.closed .form_img{
+    scale: 0;
+}
+
+.autre.closed .autrelogo{
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+
+
+
+
 .bg::after {
     content: "";
     position: absolute;
@@ -677,6 +716,45 @@ button.pfs:hover {
     background-size: 8px 8px;
     width: 100%;
     height: 100%;
+}
+
+@keyframes change_big {
+    0%{
+        background-color: var(--shadow-blur-pf);
+    }
+    25% {
+        background-color: var(--info-cartel-pf);
+    }
+    50% {
+        background-color: var(--shadow-v2);
+    }
+    75% {
+        background-color: var(--text-color-pf-2);
+    }
+    100% {
+        background-color: var(--shadow-blur-pf);
+    }
+}
+
+@keyframes scal_move {
+    0% {
+        transform: scale(1);
+        background-color: var(--text-highlight-ph);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.05);
+        background-color: var(--text-highlight-ph2);
+    }
+    75% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+        background-color: var(--text-highlight-ph);
+    }
 }
 
 @keyframes flow {

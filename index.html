@@ -26,9 +26,13 @@
                     <ba>My dev </ba>
                     <hi class="hi"> Portfolio</hi>
                 </h1>
-               
+
             </div><button class="pf" onclick="document.location.href='https://dev.codealuxz.fr';">Visit</button>
-            <div class="sidemod"><h1><hi>Portfolio</hi></h1></div>
+            <div class="sidemod">
+                <h1>
+                    <hi>Portfolio</hi>
+                </h1>
+            </div>
             <div class="left_side_pf">
                 <div class="button-logo-container">
                     <div class="logo"><img src="icon/logo.png" alt=""></div>
@@ -53,49 +57,58 @@
             <div class="big_shadow_ph"></div>
             <div class="title">
                 <h1>
-                    PHOTOS                    
+                    PHOTOS
                 </h1>
             </div><button class="pf" onclick="document.location.href='https://photo.codealuxz.fr';">Visit</button>
-<div class="imgexbox"><img class="imgex" src="./img/Capture d'écran 2025-03-07 192320.png" alt="">
-        </div></div>
-        <div class="card autre closed">
-
+            <div class="imgexbox"><img class="imgex" src="./img/Capture d'écran 2025-03-07 192320.png" alt="">
+            </div>
         </div>
-    </div>
+        <div class="card autre closed">
+            <div class="bg"></div>
+            <div class="title">
+                <h1>
+                    <ha>Une idée de </ha>
+                    <hi>Projet web ?</hi>
+                </h1>
+            </div>
 
-    <script>
+            <div class="big_shadow_au"></div>
+        </div>
 
-        window.onload = function () {
-            const cards = document.querySelectorAll('.card');
+        <script>
 
-            function closeAllCards() {
-                cards.forEach(card => {
-                    card.classList.add('closed');
-                    card.classList.remove('open');
-                });
-            }
+            window.onload = function () {
+                const cards = document.querySelectorAll('.card');
 
-            function openCard(card) {
-                card.classList.add('open');
-                card.classList.remove('closed');
-
-                // Vérification et affichage dans la console
-                if (card.classList.contains('portfolio')) {
-                    document.body.style.backgroundColor = "var(--backgroud-pf)";
-                } else if (card.classList.contains('photo')) {
-                    document.body.style.backgroundColor = "var(--backgroud-ph)";
+                function closeAllCards() {
+                    cards.forEach(card => {
+                        card.classList.add('closed');
+                        card.classList.remove('open');
+                    });
                 }
-            }
 
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    closeAllCards();
-                    openCard(card);
+                function openCard(card) {
+                    card.classList.add('open');
+                    card.classList.remove('closed');
+
+                    if (card.classList.contains('portfolio')) {
+                        document.body.style.backgroundColor = "var(--backgroud-pf)";
+                    } else if (card.classList.contains('photo')) {
+                        document.body.style.backgroundColor = "var(--backgroud-ph)";
+                    } else if (card.classList.contains('autre')) {
+                        document.body.style.backgroundColor = "var(--backgroud-ph)";
+                    }
+                }
+
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        closeAllCards();
+                        openCard(card);
+                    });
                 });
-            });
-        };
+            };
 
-    </script>
+        </script>
 </body>
 
 </html>

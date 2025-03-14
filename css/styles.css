@@ -32,6 +32,9 @@ body {
     --card-ph: #ECECEC;
     --text-color-ph: #000000;
     --text-highlight-ph: #8BE657;
+    /*-----Autre-----*/
+    --text-highlight-au: #FF4444;
+    --card-au: #0b0c108e;
 }
 
 
@@ -48,7 +51,7 @@ body {
     padding: 20px;
     position: relative;
     overflow: hidden;
-    border: #0B0C10 1px solid;
+    border: #7373737e 2px solid !important;
 }
 
 .container {
@@ -136,6 +139,7 @@ body {
     color: var(--text-highlight-pf);
     font-family: 'dunkin';
 }
+
 .portfolio .sidemod hi {
     color: var(--text-highlight-pf);
     font-family: 'dunkin';
@@ -149,7 +153,6 @@ body {
     z-index: 10 !important;
     font-family: 'dunkin', sans-serif;
     text-decoration-skip: 66px;
-    transition: all 0.2s ease, rotate 0.4s ease;
     scale: 0;
 }
 
@@ -227,16 +230,17 @@ body {
     border: none;
     position: absolute;
     top: 170px;
-    left: 10%;
+    right: 10%;
     color: var(--text-color-pf-2);
     padding: 20px 0px;
     border-radius: 10000px;
     font-weight: 700;
     width: 80%;
+    scale: 1;
     cursor: pointer;
     box-shadow: 0 0 40px var(--info-cartel-pf);
     z-index: 10;
-    transition: all 0.2s ease, width 0.6s ease;
+    transition: all 0.2s ease, width 0.4s ease;
 }
 
 button.pf:hover {
@@ -321,13 +325,15 @@ button.pfs:hover {
     top: calc(100px + 50%);
     transform: translateX(50%);
 }
-.portfolio.closed .sidemod hi{
+
+.portfolio.closed .sidemod hi {
     left: -60px;
     rotate: -90deg;
     top: calc(100px + 50%);
     transform: translateX(50%);
     scale: 1;
 }
+
 .portfolio.closed .left_side_pf {
     position: absolute;
     top: 0px;
@@ -381,6 +387,7 @@ button.pfs:hover {
 }
 
 .portfolio.closed button {
+    scale: 0;
     opacity: 0;
     width: 0;
 }
@@ -469,11 +476,6 @@ button.pfs:hover {
     background-color: var(--card-ph);
 }
 
-.autre {
-    background-color: red;
-}
-
-
 .photo.closed .title h1 {
     position: absolute;
     rotate: -90deg;
@@ -500,4 +502,130 @@ button.pfs:hover {
     right: 20px;
     width: 80px;
     height: 80px;
+}
+
+
+.autre {
+    background-color: var(--card-au);
+}
+
+.autre .title h1 {
+    position: absolute;
+    top: 40px;
+    left: 55px;
+    font-size: 3.5em !important;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-left: 5px;
+    z-index: 10 !important;
+    font-family: 'Poppins';
+    text-decoration-skip: 66px;
+    font-weight: 500;
+    color: var(--text-color-pf);
+}
+
+.big_shadow_au {
+    z-index: 1 !important;
+    width: 100%;
+    position: absolute;
+    right: 0 ;
+    bottom: -70%;
+    background-color: var(--text-highlight-au);
+    filter: blur(75px);
+    aspect-ratio: 3/2;
+    border-radius: 50%;
+    scale: 0;
+}
+
+
+/* From Uiverse.io by SelfMadeSystem */
+.bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    backdrop-filter: hue-rotate(90deg);
+    mask: linear-gradient(45deg, #0000, #000);
+    animation: rotaty 5s linear infinite;
+    transform-origin: center;
+}
+
+.bg {
+    position: absolute;
+    margin: -20px;
+    background-image: radial-gradient(circle at 50% 50%,
+            #0000 0,
+            #0000 2px,
+            hsl(0 0 4%) 2px);
+    background-size: 8px 8px;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes thingy {
+    0% {
+        filter: var(--f) hue-rotate(0deg);
+    }
+
+    to {
+        filter: var(--f) hue-rotate(1turn);
+    }
+}
+
+.bg::before {
+    content: "";
+    position: absolute;
+    inset: -8em;
+    z-index: -1;
+    --f: blur(7em) brightness(5);
+    --c: #09f;
+    animation:
+        blobs-1e28bd3d 150s linear infinite,
+        thingy 5s linear infinite;
+    background-color: #000;
+    background-image: radial-gradient(ellipse 66px 50px at 50% 50%,
+            #0f0 0%,
+            transparent 100%),
+        radial-gradient(ellipse 77px 60px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 78px 100px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 73px 96px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 76px 77px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 66px 51px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 90px 57px at 50% 50%, #0f0 0%, transparent 100%),
+        radial-gradient(ellipse 89px 93px at 50% 50%, #0f0 0%, transparent 100%);
+    background-size:
+        726px 576px,
+        1242px 454px,
+        876px 1160px,
+        691px 873px,
+        914px 550px,
+        1159px 340px,
+        1017px 831px,
+        313px 977px;
+}
+
+@keyframes blobs-1e28bd3d {
+    0% {
+        background-position:
+            271px 478px,
+            62px 291px,
+            67px 861px,
+            553px 413px,
+            36px 392px,
+            1077px 226px,
+            400px 799px,
+            7px 264px;
+    }
+
+    to {
+        background-position:
+            -14975px -2978px,
+            31112px 11187px,
+            -20081px 8981px,
+            11609px -3952px,
+            -12760px 12492px,
+            -9354px 2946px,
+            9553px 21574px,
+            946px 9057px;
+    }
 }

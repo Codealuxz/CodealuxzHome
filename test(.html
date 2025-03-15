@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrôle du  en Temps Réel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+      text-align: center;
+    }
+    .slider-container {
+      margin: 20px 0;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    .feedback {
+      text-align: center;
+      margin-top: 10px;
+      padding: 10px;
+      background: #eee;
+      border-radius: 5px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contrôle du </h1>
+    <button id="connectBtn">Se connecter à l'Arduino</button>
+    
+    <div class="slider-container">
+      <label for="speedSlider">Intensité (130 - 255) : <span id="speedValue">130</span></label>
+      <input type="range" id="speedSlider" min="130" max="255" value="130" step="1">
+    </div>
+    
+    <div class="feedback" id="feedback">En attente de connexion...</div>
+  </div>
+  
+  <script>
+    let port;
+    let writer;
+    let isConnected = false;
+    let lastPingResponseTime = Date.now();
+    let pingInterval;
+
+    const connectBtn = document.getElementById("connectBtn");
+    const speedSlider = document.getElementById("speedSlider");
+    const speedValue = document.getElementById("speedValue");
+    const feedback = document.getElementById("feedback");
+
+    // Met à jour l'affichage de la valeur du slider
+    speedSlider.addEventListener("input", () => {
+      speedValue.textContent = speedSlider.value;
+    });
+
+    // Fonction pour ouvrir le port série (vérifie si déjà ouvert)
+    async function connectArduino() {
+      try {
+        // Si un port est déjà ouvert, ne pas tenter de le rouvrir
+        if (port && port.readable && port.writable) {
+          feedback.textContent = "Déjà connecté à l'Arduino.";
+          console.log("Déjà connecté.");
+          return;
+        }
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+        writer = port.writable.getWriter();
+        isConnected = true;
+        lastPingResponseTime = Date.now();
+        feedback.textContent = "Connecté à l'Arduino. Envoi de STOP...";
+        console.log("Port série ouvert");
+        // Dès la connexion, envoyer STOP pour arrêter le moteur et désactiver le joystick
+        await sendCommand("STOP");
+        readLoop();
+        startConnectionCheck();
+      } catch (err) {
+        console.error("Erreur de connexion:", err);
+        feedback.textContent = "Erreur de connexion à l'Arduino.";
+      }
+    }
+
+    // Fonction de lecture continue des données entrantes
+    async function readLoop() {
+      const decoder = new TextDecoder();
+      while (port.readable) {
+        try {
+          const reader = port.readable.getReader();
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            const data = decoder.decode(value);
+            console.log("Données reçues:", data);
+            if (data.includes("PONG")) {
+              lastPingResponseTime = Date.now();
+              feedback.textContent = "Connexion stable.";
+            }
+          }
+          reader.releaseLock();
+        } catch (err) {
+          console.error("Erreur de lecture:", err);
+        }
+      }
+    }
+
+    // Vérifier la connexion toutes les 5 secondes
+    function startConnectionCheck() {
+      pingInterval = setInterval(async () => {
+        if (isConnected) {
+          await sendCommand("PING");
+          if (Date.now() - lastPingResponseTime > 7000) {
+            feedback.textContent = "Connexion perdue.";
+            isConnected = false;
+            clearInterval(pingInterval);
+          }
+        }
+      }, 5000);
+    }
+
+    // Fonction pour envoyer une commande (obtention et libération du writer)
+    async function sendCommand(cmd) {
+      if (!isConnected || !writer) {
+        console.log("Port non connecté");
+        return;
+      }
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(cmd + "\n");
+        await writer.write(data);
+        console.log("Commande envoyée:", cmd);
+        feedback.textContent = "Commande envoyée: " + cmd;
+      } catch (err) {
+        console.error("Erreur d'écriture:", err);
+        feedback.textContent = "Erreur lors de l'envoi de la commande.";
+      }
+    }
+
+    // Envoyer la commande SPEED toutes les 500 ms
+    setInterval(() => {
+      if (isConnected) {
+        sendCommand("SPEED:" + speedSlider.value);
+      }
+    }, 500);
+
+    // Bouton de connexion
+    connectBtn.addEventListener("click", () => {
+      if (!isConnected) {
+        connectArduino();
+      } else {
+        feedback.textContent = "Déjà connecté à l'Arduino.";
+        console.log("Déjà connecté");
+      }
+    });
+  </script>
+</body>
+</html>
